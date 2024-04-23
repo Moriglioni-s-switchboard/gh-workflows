@@ -83,7 +83,7 @@ jobs:
         echo "AWS Check Result: $?"
 
     - name: Set up Kustomize
-      uses: ./
+      uses: actions/checkout@v3
       with:
         version: 4.0.2
 
