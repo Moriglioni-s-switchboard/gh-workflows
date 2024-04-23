@@ -96,6 +96,7 @@ jobs:
           # echo "GH_K8S_SECRETS found, creating Secret..."
           # echo ${GH_K8S_SECRETS} > .env.secret.enc
           # cat .env.secret.enc | base64 -d > .env.secret
+          echo "${GH_K8S_SECRETS}"
           echo "${GH_K8S_SECRETS}" > .env.secret
         else
           echo "No GH_K8S_SECRETS found, creating empty Secret..."
