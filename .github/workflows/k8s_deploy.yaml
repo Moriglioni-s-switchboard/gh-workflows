@@ -108,7 +108,7 @@ jobs:
           kustomize edit set image "$BASE_IMAGE_REPOSITORY"/"$IMAGE"="$BASE_IMAGE_REPOSITORY"/"$IMAGE_TAG"; \
           kustomize edit set namespace "$NAMESPACE"; \
         done
-        kustomize build . | kubectl apply -f -
+        kustomize build . | kubectl apply -f - --validate=false
         for DEPLOYMENT in $DEPLOYMENTS; do kubectl rollout status deployment/"$DEPLOYMENT" -n "$NAMESPACE"; done
         kubectl -n "$NAMESPACE" get services -o wide --validate=false
       env:
