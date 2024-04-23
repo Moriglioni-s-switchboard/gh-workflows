@@ -103,7 +103,7 @@ jobs:
         fi
         for IMAGE_TAG in $IMAGES_TAGS; \
           do IMAGE=$(echo "$IMAGE_TAG" | cut -d':' -f1) ; \
-          echo $IMAGE ; \
+          echo $$BASE_IMAGE_REPOSITORY"/"$IMAGE"="$BASE_IMAGE_REPOSITORY"/"$IMAGE_TAG ; \
           kustomize edit set image "$BASE_IMAGE_REPOSITORY"/"$IMAGE"="$BASE_IMAGE_REPOSITORY"/"$IMAGE_TAG"; \
           kustomize edit set namespace "$NAMESPACE"; \
         done
