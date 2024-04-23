@@ -85,7 +85,7 @@ jobs:
     - name: Set up Kustomize
       uses: imranismail/setup-kustomize@v2
       run: |-
-        kustomize --version
+        kustomize version
     - name: Deploy with kustomize
       run: |-
         cd "$KUSTOMIZATION_DIR"
