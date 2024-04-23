@@ -69,11 +69,12 @@ jobs:
 
     - name: Setup kubectl
       run: |-
-        aws eks update-kubeconfig --region ${{ secrets.aws_region }} --name ${K8S_CLUSTER_NAME}
+        aws eks update-kubeconfig --region ${AWS_REGION} --name ${K8S_CLUSTER_NAME}
         # See https://github.com/aws/aws-cli/issues/6920
         curl -L https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl \
           -o /usr/local/bin/kubectl
       env:
+        AWS_REGION: ${{ secrets.AWS_SECRET_REGION }}
         K8S_CLUSTER_NAME: ${{ inputs.k8s_cluster_name }}
 
     - name: Set up Kustomize
